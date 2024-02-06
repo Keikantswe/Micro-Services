@@ -1,0 +1,9 @@
+server:
+  port: 8088
+
+# By default, configurations are fetched from git Repository, bet here we fetch manually
+spring:
+  profiles:
+    active: native
+
+
