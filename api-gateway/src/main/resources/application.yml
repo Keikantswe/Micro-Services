@@ -2,5 +2,19 @@ spring:
   application:
     name: API-GATEWAY
 
+
+  cloud:
+    gateway:
+      mvc:
+        routes:
+          - id: employee-service
+            uri: lb://employee-service
+            predicates:
+              - path=/employee/**
+
+          - id: department-service
+            uri: lb://department-service
+            predicates:
+              - path=/department/**
   config:
     import: "optional:configserver:http://localhost:8088"

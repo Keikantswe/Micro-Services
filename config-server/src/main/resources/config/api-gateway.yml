@@ -1,6 +1,21 @@
 server:
   port: 9192
 
+spring:
+  cloud:
+    gateway:
+      mvc:
+        routes:
+          - id: employee-service
+            uri: lb://employee-service
+            predicates:
+              - path=/employee/**
+
+          - id: department-service
+            uri: lb://department-service
+            predicates:
+              - path=/department/**
+
 eureka:
   client:
     register-with-eureka: true
