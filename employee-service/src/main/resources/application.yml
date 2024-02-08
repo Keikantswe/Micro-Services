@@ -4,3 +4,19 @@ spring:
 
   config:
     import: "optional:configserver:http://localhost:8088"
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5433/employee-service
+    username: postgres
+    password: 123456789
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+      database: postgresql
+      database-platform: orq.hibernate.dialect.PostgreSQLDialect

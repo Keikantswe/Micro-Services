@@ -6,14 +6,20 @@ spring:
       import: "optional:configserver:http://localhost:8088"
 
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/department-service
-    username: root
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5433/department-service
+    username: postgres
     password: 123456789
 
   jpa:
     hibernate:
       ddl-auto: update
     show-sql: true
+
+    properties:
+      hibernate:
+        format_sql: true
+      database: postgresql
+      database-platform: org.hibernate.dialect.PostgreSQLDialect
 
 
