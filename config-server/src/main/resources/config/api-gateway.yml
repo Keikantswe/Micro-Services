@@ -1,7 +1,6 @@
 server:
   port: 9192
 
-spring:
   cloud:
     gateway:
       mvc:
@@ -10,11 +9,21 @@ spring:
             uri: lb://employee-service
             predicates:
               - path=/employee/**
+            filters:
+              - args:
+                  name: employee-service
+                  fallbackuri: forward:/employeeServiceFallback
 
           - id: department-service
             uri: lb://department-service
             predicates:
               - path=/department/**
+
+            filters:
+              - name:  CircuitBreaker
+                args:
+                  name: department-service
+                  fallbackuri: forward:/departmentServiceFallback
 
 eureka:
   client:
